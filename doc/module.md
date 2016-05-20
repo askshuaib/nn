@@ -290,13 +290,13 @@ parameters that are stored in tensors.
 <a name="nn.Module.getParameters"></a>
 ### [flatParameters, flatGradParameters] getParameters() ###
 
-This function returns two tensors. One for the flattened learnable
+This function returns two 1D tensors. One for the flattened learnable
 parameters `flatParameters` and another for the gradients of the energy
 wrt to the learnable parameters `flatGradParameters`.
 
 Custom modules should not override this function. They should instead override [parameters(...)](#nn.Module.parameters) which is, in turn, called by the present function.
 
-This function will go over all the weights and gradWeights and make them view into a single tensor (one for weights and one for gradWeights). Since the storage of every weight and gradWeight is changed, this function should be called only once on a given network.
+This function will go over all the learnable parameters i.e weights and biases in the module and make them view into a single 1D tensor as `flatParameters`. Similarly `flatGradParameters` which includes all the gradient weights and gradient biases as 1D tensor. Since the storage of every weight, bias, gradWeight and gradBias is changed, this function should be called only once on a given network.
 
 <a name="nn.Module.training"></a>
 ### training() ###
