@@ -37,3 +37,8 @@ function TemporalMaxPooling:clearState()
    if self.indices then self.indices:set() end
    return parent.clearState(self)
 end
+
+function TemporalMaxPooling:__tostring__()
+   return string.format('%s(%d, %d)', torch.type(self),
+         self.kW, self.dW)
+end
