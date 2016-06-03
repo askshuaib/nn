@@ -79,10 +79,10 @@ function SpatialSubSampling:accGradParameters(input, gradOutput, scale)
 end
 
 function SpatialSubSampling:__tostring__()
-	local s = string.format('%s(%d, %dx%d', torch.type(self),
-         self.nInputPlane, self.kW, self.kH)
-	if self.dW ~= 1 or self.dH ~= 1 then
-     s = s .. string.format(', %d,%d', self.dW, self.dH)
-	end
-	return s .. ')'
+   local s = string.format('%s(%d, %dx%d', torch.type(self),
+          self.nInputPlane, self.kW, self.kH)
+   if self.dW ~= 1 or self.dH ~= 1 then
+   	s = s .. string.format(', %d,%d', self.dW, self.dH)
+   end
+   return s .. ')'
 end
