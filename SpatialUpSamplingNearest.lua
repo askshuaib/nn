@@ -65,3 +65,7 @@ function SpatialUpSamplingNearest:updateGradInput(input, gradOutput)
    )
    return self.gradInput
 end
+
+function SpatialUpSamplingNearest:__tostring__()
+   return torch.type(self)..'('..self.scale_factor..')'
+end
