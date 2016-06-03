@@ -67,5 +67,14 @@ function TemporalConvolution:accGradParameters(input, gradOutput, scale)
    )
 end
 
+function TemporalConvolution:__tostring__()
+   local s = string.format('%s(%d -> %d, %d', torch.type(self),
+          self.inputFrameSize, self.outputFrameSize, self.kW)
+   if self.dW ~= 1 then 
+		s = s .. ', ' .. self.dW
+   end
+   return s .. ')'
+end
+
 -- we do not need to accumulate parameters when sharing
 TemporalConvolution.sharedAccUpdateGradParameters = TemporalConvolution.accUpdateGradParameters
