@@ -62,3 +62,12 @@ function TemporalSubSampling:accGradParameters(input, gradOutput, scale)
 	self.gradBias:cdata(), self.kW, self.dW, scale
     )
 end
+
+function TemporalSubSampling:__tostring__()
+   local s = string.format('%s(%d, %d', torch.type(self),
+        self.inputFrameSize, self.kW)
+   if self.dW ~= 1 then 
+      s = s .. ', ' .. self.dW
+   end
+   return s .. ')'
+end
